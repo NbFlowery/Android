@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "919269155172",
+    "project_id": "flowery-57250",
+    "storage_bucket": "flowery-57250.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919269155172:android:c19c4d2cabeb9bc2111a71",
+        "android_client_info": {
+          "package_name": "com.nongboo.flowery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919269155172-g4n4g76p2bfetfkp15vt6dse0aho4isr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nongboo.flowery",
+            "certificate_hash": "bf9125d9295f754d2115574571ef28f27a657ff5"
+          }
+        },
+        {
+          "client_id": "919269155172-1a72ab8rlqe5c3ii6advct29ob3fee9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU04PRhrPsj7AiE1BlQpy3GQJg6vHRcV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919269155172-1a72ab8rlqe5c3ii6advct29ob3fee9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
