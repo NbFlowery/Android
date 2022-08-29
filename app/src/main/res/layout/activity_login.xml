@@ -8,63 +8,41 @@
         android:layout_height="match_parent"
         tools:context=".view.LoginActivity">
 
-        <TextView
-            android:id="@+id/login_tv_display_name"
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DisplayName: "
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/flowery"
+            app:layout_constraintStart_toStartOf="@+id/flowery"
+            android:src="@drawable/sprout" />
 
         <TextView
-            android:id="@+id/login_tv_user_display_name"
+            android:id="@+id/flowery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/login_tv_display_name"
-            app:layout_constraintStart_toEndOf="@+id/login_tv_display_name"
-            app:layout_constraintTop_toTopOf="@+id/login_tv_display_name"
-            tools:text="test"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
-
-
-        <TextView
-            android:id="@+id/login_tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Email: "
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:text="매일의 투두로\n나만의 꽃밭 만들기"
+            android:textColor="#323232"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/login_tv_display_name"
-            app:layout_constraintTop_toBottomOf="@+id/login_tv_display_name" />
-
-        <TextView
-            android:id="@+id/login_tv_user_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="TextView"
-            android:textSize="20sp"
-            android:layout_marginStart="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/login_tv_email"
-            app:layout_constraintStart_toEndOf="@+id/login_tv_email"
-            app:layout_constraintTop_toTopOf="@+id/login_tv_email" />
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/login_btn_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.widget.Button
+            android:id="@+id/login_btn_google"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="300dp"
+            android:background="#F5F5F5"
+            android:backgroundTint="#F5F5F5"
+            android:text="구글로 계속하기"
+            android:fontFamily="@font/noto"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
