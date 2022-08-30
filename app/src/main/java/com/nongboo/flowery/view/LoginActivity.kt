@@ -45,8 +45,6 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
-
-
         //metion
         val textData: String = binding.flowery.text.toString()
         val builder = SpannableStringBuilder(textData)
@@ -54,13 +52,10 @@ class LoginActivity : AppCompatActivity() {
         builder.setSpan(colorSpan, 8, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.flowery.text = builder
 
-
         auth = Firebase.auth
 
         binding.loginBtnGoogle.setOnClickListener {
             googleSignIn() //로그인 통합 페이지로 넘김
-
-
         }
 
         initGoogle() // RegisterActivityResult Init

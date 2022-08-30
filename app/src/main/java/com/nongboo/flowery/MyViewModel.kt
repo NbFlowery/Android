@@ -3,7 +3,7 @@ package com.nongboo.flowery.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-data class Item( val name: String, var state: Boolean = false)
+data class Item(val name: String, var state: Boolean = false)
 enum class ItemNotify {
     ADD, UPDATE, DELETE
 }
@@ -37,7 +37,6 @@ class MyViewModel : ViewModel() {
         //itemNotified = pos
         items[pos] = item
         itemsData.value = items
-
     }
 
     fun deleteItem(pos: Int) {
@@ -57,6 +56,6 @@ class MyViewModel : ViewModel() {
         for (item in items) {
             if (item.state) finishCnt += 1
         }
-        return if (items.size == 0) 0 else finishCnt*100/items.size
+        return if (items.size == 0) 0 else finishCnt * 100 / items.size
     }
 }

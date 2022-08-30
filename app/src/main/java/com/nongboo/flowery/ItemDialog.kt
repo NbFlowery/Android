@@ -29,13 +29,11 @@ class ItemDialog(private val itemPos: Int = -1) : BottomSheetDialogFragment() {
 
         if (itemPos >= 0) {
             binding.editTextName.setText(viewModel.getItem(itemPos).name)
-
         }
 
         binding.buttonOK.setOnClickListener {
             val item = Item(
                 binding.editTextName.text.toString()
-
             )
             if (itemPos < 0)
                 viewModel.addItem(item)
@@ -43,7 +41,5 @@ class ItemDialog(private val itemPos: Int = -1) : BottomSheetDialogFragment() {
                 viewModel.updateItem(item, itemPos)
             dismiss()
         }
-
-
     }
 }

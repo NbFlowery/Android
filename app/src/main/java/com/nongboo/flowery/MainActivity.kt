@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     //오늘 날짜
     private val now = System.currentTimeMillis() //현재 시간 가져오기
     private val D_now = Date(now) //현재 시간을 date 타입으로 변환
-    private val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale("ko","kr"))
+    private val dateFormat = SimpleDateFormat("yyyy년 MM월 dd일", Locale("ko", "kr"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +48,13 @@ class MainActivity : AppCompatActivity() {
         binding.dateText.text = dateFormat.format(D_now) //현재 시간을 dateFormat에 선언한 형태의 string으로 변환
 
         //달력 날짜
-        binding.calendarView.setOnDateChangeListener{ calendarView, year, month, day ->
+        binding.calendarView.setOnDateChangeListener { calendarView, year, month, day ->
             // 날짜 선택시 그 날의 정보 할당
-            binding.dateText.text ="${year}년 ${month+1}월 ${day}일"
+            binding.dateText.text = "${year}년 ${month + 1}월 ${day}일"
         }
 
         //사용자 프로필 사진 클릭했을 때
-        binding.userImage.setOnClickListener{
+        binding.userImage.setOnClickListener {
             moveUserInformationPage()
         }
 
@@ -70,16 +70,20 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.setHasFixedSize(true)//아이템마다 각 높이를 일정하게
 
         registerForContextMenu(binding.recyclerView) //컨텍스트 메뉴 등록하는법
-
     }
 
     private fun observerViewModel() {
         viewModel.apply {
             itemsData.observe(this@MainActivity) {
 
-                val percentData= "${this.getItemsPercent()}% 완료"
+                val percentData = "${this.getItemsPercent()}% 완료"
                 val builder = SpannableStringBuilder(percentData)
-                builder.setSpan(ForegroundColorSpan(Color.parseColor("#19A763")), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                builder.setSpan(
+                    ForegroundColorSpan(Color.parseColor("#19A763")),
+                    0,
+                    3,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
                 binding.todoPercent.text = builder
             }
         }
@@ -108,12 +112,11 @@ class MainActivity : AppCompatActivity() {
             else -> return super.onContextItemSelected(item)
         }
         return true
-
     }
 
     //사용자 정보 액티비티 호출
-    private fun moveUserInformationPage(){
-        startActivity(Intent(this,UserInformationActivity::class.java))
+    private fun moveUserInformationPage() {
+        startActivity(Intent(this, UserInformationActivity::class.java))
         finish()
     }
 }

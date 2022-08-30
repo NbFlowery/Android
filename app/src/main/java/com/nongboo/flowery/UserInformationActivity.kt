@@ -23,11 +23,10 @@ class UserInformationActivity : AppCompatActivity() {
         setContentView(binding.root)
         super.onCreate(savedInstanceState)
 
-        val user = Firebase.auth.currentUser
         auth = Firebase.auth
 
         //31개의 씨앗 중 꽃을
-        cal.set(Calendar.DAY_OF_MONTH,1)
+        cal.set(Calendar.DAY_OF_MONTH, 1)
         var lastDate = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
         binding.textView.text = "${lastDate}개의 씨앗 중 꽃을"
 
@@ -43,13 +42,10 @@ class UserInformationActivity : AppCompatActivity() {
         binding.logout.setOnClickListener {
             moveSignUpPage() //로그인 화면으로
             FirebaseAuth.getInstance().signOut()
-
         }
 
         //사용자 이메일
         binding.userEmailText.text = auth.currentUser?.email
-
-
 
     }
 
@@ -57,6 +53,5 @@ class UserInformationActivity : AppCompatActivity() {
     private fun moveSignUpPage() {
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
-
     }
 }
