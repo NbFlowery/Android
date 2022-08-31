@@ -1,8 +1,12 @@
 package com.nongboo.flowery.view
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -39,18 +43,25 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.lifecycleOwner = this
 
-        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
+        //metion
+        val textData: String = binding.flowery.text.toString()
+        val builder = SpannableStringBuilder(textData)
+        val colorSpan = ForegroundColorSpan(Color.parseColor("#84A47D"))
+        builder.setSpan(colorSpan, 8, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.flowery.text = builder
 
         auth = Firebase.auth
 
         binding.loginBtnGoogle.setOnClickListener {
-            googleSignIn()
+            googleSignIn() //로그인 통합 페이지로 넘김
         }
 
         initGoogle() // RegisterActivityResult Init
     }
 
-    private fun initGoogle() {
+    private fun initGoogle() { //다른 앱/액티비티가 실행된 후, 그 실행이 끝난 후 다시 이 액티비티로 돌아왔을 때
         startGoogleLoginForResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == RESULT_OK) {
@@ -68,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     // Google Login Success
                 } else {
-                    Log.e(TAG, "Google Result Error ${result}")
+                    Log.e(TAG, "Google Result Error ${result.resultCode}")
                 }
             }
     }
@@ -94,20 +105,20 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
-        updateUI(currentUser)
+        updateUI(currentUser) // 이미 로그인 되어있을 시 바로 메인 액티비티로 이동
     }
 
-    private fun googleSignIn() {
+    private fun googleSignIn() { //loginViewModel.getGoogleSignInClient()= GoogleSignIn.getClient(this,gso)
         startGoogleLoginForResult.launch(loginViewModel.getGoogleSignInClient().signInIntent)
     }
 
+
     private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            binding.loginTvUserDisplayName.text = user.displayName
-            binding.loginTvUserEmail.text = user.email
+        if (user != null) {//로그인 성공하면
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         } else {
-            binding.loginTvUserDisplayName.text = "Not Existed"
-            binding.loginTvUserEmail.text = ""
+            Log.d(TAG, "signInWithCredential:failed")
         }
     }
 
