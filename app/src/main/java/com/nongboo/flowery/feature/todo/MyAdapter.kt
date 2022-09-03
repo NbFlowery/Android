@@ -1,12 +1,12 @@
-package com.nongboo.flowery
+package com.nongboo.flowery.feature.todo
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.nongboo.flowery.R
 import com.nongboo.flowery.databinding.ItemLayoutBinding
-import com.nongboo.flowery.viewmodel.MyViewModel
 
-class MyAdapter(private val viewModel: MyViewModel) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(private val viewModel: TodoViewModel) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setContents() { //+버튼이나 수정한걸로 text 내용 변경

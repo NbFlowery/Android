@@ -1,4 +1,4 @@
-package com.nongboo.flowery.viewmodel
+package com.nongboo.flowery.feature
 
 import android.app.Application
 import android.content.Context

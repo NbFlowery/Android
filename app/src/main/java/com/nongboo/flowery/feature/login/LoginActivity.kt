@@ -1,35 +1,28 @@
-package com.nongboo.flowery.view
+package com.nongboo.flowery.feature.login
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.util.DataUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
-import com.nongboo.flowery.MainActivity
+import com.nongboo.flowery.feature.todo.TodoActivity
 import com.nongboo.flowery.R
 import com.nongboo.flowery.databinding.ActivityLoginBinding
-import com.nongboo.flowery.utilities.google_web_api_client_id_key
-import com.nongboo.flowery.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -56,6 +49,10 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginBtnGoogle.setOnClickListener {
             googleSignIn() //로그인 통합 페이지로 넘김
+        }
+
+        binding.loginBtnPass.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, TodoActivity::class.java))
         }
 
         initGoogle() // RegisterActivityResult Init
@@ -115,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {//로그인 성공하면
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, TodoActivity::class.java))
             finish()
         } else {
             Log.d(TAG, "signInWithCredential:failed")

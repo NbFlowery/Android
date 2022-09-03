@@ -6,16 +6,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.LoginActivity">
+        tools:context=".feature.login.LoginActivity">
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:src="@drawable/sprout"
             app:layout_constraintBottom_toTopOf="@+id/flowery"
-            app:layout_constraintStart_toStartOf="@+id/flowery"
-            android:src="@drawable/sprout" />
+            app:layout_constraintStart_toStartOf="@+id/flowery" />
 
         <TextView
             android:id="@+id/flowery"
@@ -37,12 +37,26 @@
             android:layout_marginTop="300dp"
             android:background="#F5F5F5"
             android:backgroundTint="#F5F5F5"
-            android:text="구글로 계속하기"
             android:fontFamily="@font/noto"
+            android:text="구글로 계속하기"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <android.widget.Button
+            android:id="@+id/login_btn_pass"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="#F5F5F5"
+            android:backgroundTint="#F5F5F5"
+            android:fontFamily="@font/noto"
+            android:text="Pass"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_btn_google" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,4 +1,4 @@
-package com.nongboo.flowery
+package com.nongboo.flowery.feature.profile
 
 import android.content.Intent
 import android.graphics.Color
@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.nongboo.flowery.databinding.ActivityUserInformationBinding
-import com.nongboo.flowery.view.LoginActivity
+import com.nongboo.flowery.feature.login.LoginActivity
 import java.util.*
 
 class UserInformationActivity : AppCompatActivity() {

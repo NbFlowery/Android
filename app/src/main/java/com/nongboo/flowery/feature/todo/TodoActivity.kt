@@ -1,32 +1,32 @@
-package com.nongboo.flowery
+package com.nongboo.flowery.feature.todo
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
-import android.view.View.inflate
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.nongboo.flowery.databinding.ActivityLoginBinding.inflate
-import com.nongboo.flowery.databinding.ActivityMainBinding
-import com.nongboo.flowery.viewmodel.MyViewModel
+import com.nongboo.flowery.R
+import com.nongboo.flowery.databinding.ActivityTodoBinding
+import com.nongboo.flowery.feature.profile.UserInformationActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+class TodoActivity : AppCompatActivity() {
+    private val binding by lazy { ActivityTodoBinding.inflate(layoutInflater) }
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var viewModel: MyViewModel
+    private lateinit var viewModel: TodoViewModel
     private lateinit var adapter: MyAdapter
 
     //오늘 날짜
@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this)[MyViewModel::class.java]
+        viewModel = ViewModelProvider(this)[TodoViewModel::class.java]
+        Log.d("TodoActivity", "viewModel HashCode: ${viewModel.hashCode()}")
         observerViewModel()
 
         auth = FirebaseAuth.getInstance()
@@ -74,8 +75,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun observerViewModel() {
         viewModel.apply {
-            itemsData.observe(this@MainActivity) {
-
+            itemsData.observe(this@TodoActivity) {
+                adapter.notifyDataSetChanged()
                 val percentData = "${this.getItemsPercent()}% 완료"
                 val builder = SpannableStringBuilder(percentData)
                 builder.setSpan(

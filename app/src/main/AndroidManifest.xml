@@ -16,13 +16,13 @@
         android:theme="@style/Theme.Flowery"
         tools:targetApi="31">
         <activity
-            android:name=".UserInformationActivity"
+            android:name=".feature.profile.UserInformationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".feature.todo.TodoActivity"
             android:exported="false" />
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".feature.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
